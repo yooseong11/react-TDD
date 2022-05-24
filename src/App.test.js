@@ -8,3 +8,15 @@ test("카운터는 0부터 시작합니다.", () => {
   //id가 counter인 엘리먼트의 텍스트가 0인지 테스트
   expect(counterElement).toHaveTextContent(0);
 })
+
+test("마이너스 버튼에 맞는 텍스트가 들어가있다.", ()=>{
+  render(<App />);
+  const minusButttonElement = screen.getByTestId("minus-botton");
+  expect(minusButttonElement).toHaveTextContent("-");
+});
+
+test("플러스 버튼에 맞는 텍스트가 들어가있다.", () => {
+  render(<App />);
+  const minusButttonElement = screen.getByTestId("plus-botton");
+  expect(minusButttonElement).toHaveTextContent("+");
+});
