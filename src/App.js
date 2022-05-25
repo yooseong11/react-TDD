@@ -10,8 +10,22 @@ const [counter, setCounter] = useState(0)
       <header className="App-header">
         <h3 data-testid="counter">{counter}</h3>
         <div>
-          <button data-testid="minus-botton">-</button>
-          <button data-testid="plus-botton">+</button>
+          <button
+            data-testid="minus-button"
+            onClick={() => {
+              setCounter((count) => count - 1);
+            }}
+          >
+            -
+          </button>
+          <button
+            data-testid="plus-button"
+            onClick={() => {
+              setCounter((count) => count + 1);
+            }}
+          >
+            +
+          </button>
         </div>
       </header>
     </div>
