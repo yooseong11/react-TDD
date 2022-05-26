@@ -28,6 +28,7 @@ test("플러스 버튼을 누르면 카운터가 1로 바뀝니다.", () => {
   const counterElement = screen.getByTestId("counter");
   expect(counterElement).toHaveTextContent(1);
 });
+
 test("마이너스 버튼을 누르면 카운터가 -1로 바뀝니다.", () => {
   render(<App />);
   const buttonElement = screen.getByTestId("minus-button");
@@ -35,3 +36,11 @@ test("마이너스 버튼을 누르면 카운터가 -1로 바뀝니다.", () => 
   const counterElement = screen.getByTestId("counter");
   expect(counterElement).toHaveTextContent(-1);
 });
+
+test("on/off 버튼이 파란색 입니다.", () => {
+  render(<App />);
+  const buttonElement = screen.getByTestId("on/off-button");
+  // getByTestId로 엘레멘트를 잡는 건 좋은 방법은 아니다.
+  expect(buttonElement).toHaveStyle({backgroundColor:"blue"});
+
+})
