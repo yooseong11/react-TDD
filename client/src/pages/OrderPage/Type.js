@@ -15,8 +15,10 @@ useEffect(() => {
 const loadItems = async (orderType) => {
 	try {
 		let response = await axios.get(`http://localhost:5000/${orderType}`)
+		console.log(response.data)
 		setItems(response.data)
 	} catch (error) {
+		console.log(error)
 		setError(true);
 	}
 };
@@ -35,7 +37,16 @@ const optionItems = items.map((item) => (
 	/>
 ))
 
-	return <div>{optionItems}</div>;
+	return (
+    <>
+      <h2>주문 종류</h2>
+      <div >
+        <p>하나의 가격</p>
+        <p>총가격</p>
+      </div>
+      <div className="flex flex-wrap">{optionItems}</div>
+    </>
+  );
 }
 
 export default Type
