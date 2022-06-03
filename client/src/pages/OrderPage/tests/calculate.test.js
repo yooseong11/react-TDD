@@ -1,10 +1,10 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen } from "../../../test-utils"
 import Type from "../Type"
 import userEvent from "@testing-library/user-event"
 import { OrderContextProvider } from "../../../contexts/OrderContext";
 
 test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다.', async () => {
-  render(<Type orderType="products" />, {wrapper: OrderContextProvider});
+  render(<Type orderType="products" />);
 
   const productsTotal = screen.getByText("총 가격:", { exact: false });
   // exact: ture가 defalut 
