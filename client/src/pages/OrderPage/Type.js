@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
 import Products from './Products'
 import ErrorBanner from '../../components/ErrorBanner';
 import Options from './Options';
+import OrderContext from '../../contexts/OrderContext';
 
 const Type = ({ orderType }) => {
 const [items, setItems] = useState([])
 const [error, setError] = useState(false);
+const [orderDatas, updateItemCount] = useContext(OrderContext)
 
 useEffect(() => {
   loadItems(orderType);
@@ -30,19 +32,22 @@ if (error) {
 const ItemComponents = orderType === "products" ? Products : Options;
 
 const optionItems = items.map((item) => (
-	<ItemComponents
-		key={item.name}
-		name={item.name}
-		imagePath={item.imagePath}
-	/>
-))
+  <ItemComponents
+    key={item.name}
+    name={item.name}
+    imagePath={item.imagePath}
+    updateItemCount={(itemName, newItemCount) =>
+      updateItemCount(itemName, newItemCount, orderType)
+    }
+  />
+));
 
 	return (
     <>
       <h2>주문 종류</h2>
       <div >
         <p>하나의 가격</p>
-        <p>총가격</p>
+        <p>총가격: {orderDatas.totals[orderType]} </p>
       </div>
       <div className="flex flex-wrap">{optionItems}</div>
     </>
