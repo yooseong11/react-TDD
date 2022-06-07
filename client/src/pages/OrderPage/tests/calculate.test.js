@@ -1,7 +1,9 @@
 import { render, screen } from "../../../test-utils"
 import Type from "../Type"
+import OrderPage from "../OrderPage"
 import userEvent from "@testing-library/user-event"
 import { OrderContextProvider } from "../../../contexts/OrderContext";
+import { getByText } from "@testing-library/react";
 
 test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다.', async () => {
   render(<Type orderType="products" />);
@@ -23,7 +25,7 @@ test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다
 });
 
 
-test("Update option's total when options change", async () => { 
+test("Update: 옵션 값이 바뀌면 옵션 총 가격이 변경됩니다.", async () => { 
 	render(<Type orderType="options" />)
 
 	const optionsTotal = screen.getByText("옵션 총 가격:", {exact: false})
@@ -46,3 +48,57 @@ test("Update option's total when options change", async () => {
 	userEvent.click(dinnerCheckbox);
   expect(optionsTotal).toHaveTextContent("500");
 })
+
+describe('굿즈와 옵션의 총가격을 구합니다.',  () => {
+	
+	test('총 가격은 0으로 시작하고 상품을 추가할때 가격이 변경됩니다.', async () => { 
+		render(<OrderPage />)
+
+		const total = screen.getByText("Total Price", {exact: false})
+		expect(total).toHaveTextContent("0");
+
+			const americaInput = await screen.findByRole("spinbutton", {
+        name: "America",
+      });
+	
+			userEvent.clear(americaInput);
+			userEvent.type(americaInput, "1");
+
+			expect(total).toHaveTextContent("1000");
+	})
+
+	test("Update: 하나의 옵션을 추가할때 총 가격이 변경됩니다.", async () => {
+		render(<OrderPage />);
+		const total = screen.getByText("Total Price", { exact: false });
+
+		const insuranceCheckbox = await screen.findByRole("checkbox", {
+    name: "Insurance",
+		});
+	
+		userEvent.click(insuranceCheckbox);
+		expect(total).toHaveTextContent("500");
+
+  });
+	
+	test("Update: 옵션과 상품을 제거할 때 총 가격이 변경됩니다.", async () => {
+		render(<OrderPage />);
+		const total = screen.getByText("Total Price", { exact: false });
+
+    const insuranceCheckbox = await screen.findByRole("checkbox", {
+      name: "Insurance",
+    });
+		userEvent.click(insuranceCheckbox);
+
+		const americaInput = await screen.findByRole("spinbutton", {
+			name: "America",
+		});
+		userEvent.clear(americaInput);
+		userEvent.type(americaInput, "3");
+
+		userEvent.clear(americaInput);
+    userEvent.type(americaInput, "1");
+
+		expect(total).toHaveTextContent("1500");
+  });
+
+	})
