@@ -21,3 +21,28 @@ test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다
 	expect(productsTotal).toHaveTextContent("1000");
 
 });
+
+
+test("Update option's total when options change", async () => { 
+	render(<Type orderType="options" />)
+
+	const optionsTotal = screen.getByText("옵션 총 가격:", {exact: false})
+	expect(optionsTotal).toHaveTextContent("0");
+	
+	const insuranceCheckbox = await screen.findByRole("checkbox",{
+		name: "Insurance",
+	})
+
+	userEvent.click(insuranceCheckbox);
+	expect(optionsTotal).toHaveTextContent("500");
+
+	const dinnerCheckbox = await screen.findByRole("checkbox", {
+    name: "Dinner",
+  });
+	
+	userEvent.click(dinnerCheckbox);
+  expect(optionsTotal).toHaveTextContent("1000");
+
+	userEvent.click(dinnerCheckbox);
+  expect(optionsTotal).toHaveTextContent("500");
+})
