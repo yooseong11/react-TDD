@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-const SummaryPage = () => {
-	const [checked, setChecked] = useState(false);
+const SummaryPage = ({ setStep }) => {
+  const [checked, setChecked] = useState(false);
 
-	return (
+  return (
     <div>
       <form>
         <input
@@ -12,9 +12,7 @@ const SummaryPage = () => {
           onChange={(e) => setChecked(e.target.checked)}
           id="confirm-checkbox"
         ></input>
-        <label htmlFor="confirm-checkbox">
-          주문하려는 것을 확인하셨나요?
-        </label>
+        <label htmlFor="confirm-checkbox">주문하려는 것을 확인하셨나요?</label>
         <br />
         <button disabled={!checked} type="submit">
           주문확인
@@ -22,6 +20,6 @@ const SummaryPage = () => {
       </form>
     </div>
   );
-}
+};
 
-export default SummaryPage
+export default SummaryPage;
