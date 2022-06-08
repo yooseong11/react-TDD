@@ -1,6 +1,7 @@
 import { render, screen } from './test-utils';
 import userEvent from "@testing-library/user-event"
 import App from './App'
+import { waitFor } from '@testing-library/react';
 
 test('주문을 성공합니다.', async () => {
   render(<App />);
@@ -74,5 +75,15 @@ test('주문을 성공합니다.', async () => {
 		name: "첫페이지로"
 	})
 	userEvent.click(firstPageButton);
+
+  const productsTotal = screen.getByText("상품 총 가격: 0");
+  expect(productsTotal).toBeInTheDocument();
+
+  const optionsTotal = screen.getByText("옵션 총 가격: 0");
+  expect(optionsTotal).toBeInTheDocument();
+
+  await waitFor(() => {
+    screen.getByRole("spinbutton", { name: "America" });
+  });
 
 })
