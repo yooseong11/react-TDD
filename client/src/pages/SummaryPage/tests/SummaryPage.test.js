@@ -9,7 +9,7 @@ test.only("checkbox and button", () => {
 	expect(checkbox.checked).toEqual(false);
 
 	const confirmButton = screen.getByRole("button", {
-		name: "주문확인"
+		name: "주문하기"
 	});
   expect(confirmButton.disabled).toBeTruthy();
 })

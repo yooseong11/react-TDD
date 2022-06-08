@@ -27,7 +27,7 @@ const SummaryPage = ({ setStep }) => {
   }
 
   const handleSubmit = (event) => {
-    event.prevent();
+    event.preventDefault();
     setStep(2);
   }
 
@@ -47,7 +47,7 @@ const SummaryPage = ({ setStep }) => {
         <label htmlFor="confirm-checkbox">주문하려는 것을 확인하셨나요?</label>
         <br />
         <button disabled={!checked} type="submit">
-          주문확인
+          주문하기
         </button>
       </form>
     </div>

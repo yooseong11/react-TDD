@@ -13,7 +13,7 @@ test('주문을 성공합니다.', async () => {
   userEvent.type(americaInput, "2");
 	
 	const englandInput = await screen.findByRole("spinbutton", {
-		name: "America",
+		name: "England",
 	});
 	userEvent.clear(englandInput);
   userEvent.type(englandInput, "3");
@@ -54,7 +54,7 @@ test('주문을 성공합니다.', async () => {
 	userEvent.click(confirmCheckbox);
 
 	const confirmOrderButton = screen.getByRole("button", {
-		name: "주문 확인"
+		name: "주문하기"
 	})
-	userEvent(confirmOrderButton);
+	userEvent.click(confirmOrderButton);
 })
