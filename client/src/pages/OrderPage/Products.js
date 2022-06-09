@@ -7,18 +7,19 @@ const Products = ({ name, imagePath, updateItemCount }) => {
     updateItemCount(name, currentValue)
   }
 
+
   return (
-    <div className="p-4">
+    <div className="mr-2 py-5">
       <img
-        className="rounded max-w-xs "
+        className="rounded w-full"
         src={`http://localhost:5000/${imagePath}`}
         alt={`${name} product`}
       />
-      <form className="flex justify-between p-1">
+      <form className="flex flex-col p-1">
         <label htmlFor={name}>{name}</label>
         <input
           id={name}
-          className="font-semibold border"
+          className="font-semibold border a"
           type="number"
           name="quantity"
           min={0}
@@ -26,6 +27,7 @@ const Products = ({ name, imagePath, updateItemCount }) => {
           onChange={handleChange}
         />
       </form>
+      
     </div>
   );
 };

@@ -46,14 +46,11 @@ const Type = ({ orderType }) => {
 
   return (
     <>
-      <h2>주문 종류</h2>
+      <h2 className="text-lg">{orderTypeKorean}</h2>
       <div>
-        <p>하나의 가격</p>
-        <p>
-          {orderTypeKorean} 총 가격: {orderDatas.totals[orderType]}{" "}
-        </p>
+        <p>가격: {orderDatas.pricePerItem[orderType]}</p>
       </div>
-      <div className="flex flex-wrap">{optionItems}</div>
+      <div className="py-4">{optionItems}</div>
     </>
   );
 };

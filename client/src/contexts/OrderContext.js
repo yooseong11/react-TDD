@@ -3,7 +3,7 @@ import { createContext, useState, useMemo, useEffect } from "react";
 export const OrderContext = createContext();
 
 const pricePerItem = {
-  products: 1000,
+  products: 3000,
   options: 500,
 };
 
@@ -55,7 +55,11 @@ export function OrderContextProvider(props) {
       });
     };
 
-    return [{ ...orderCounts, totals }, updateItemCount, resetOrderDatas];
+    return [
+      { ...orderCounts, totals, pricePerItem },
+      updateItemCount,
+      resetOrderDatas,
+    ];
   }, [orderCounts, totals]);
   return <OrderContext.Provider value={value} {...props} />;
 }
