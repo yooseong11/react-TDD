@@ -51,6 +51,9 @@ const Type = ({ orderType }) => {
         <p>가격: {orderDatas.pricePerItem[orderType]}</p>
       </div>
       <div className="py-4">{optionItems}</div>
+      <div>
+        {orderTypeKorean} 총 가격: {orderDatas.totals[orderType]}
+      </div>
     </>
   );
 };

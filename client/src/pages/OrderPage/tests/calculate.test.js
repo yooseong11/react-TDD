@@ -20,7 +20,7 @@ test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다
 
 	userEvent.clear(americaInput);
 	userEvent.type(americaInput, "1");
-	expect(productsTotal).toHaveTextContent("1000");
+	expect(productsTotal).toHaveTextContent("3000");
 
 });
 
@@ -28,7 +28,7 @@ test('상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다
 test("Update: 옵션 값이 바뀌면 옵션 총 가격이 변경됩니다.", async () => { 
 	render(<Type orderType="options" />)
 
-	const optionsTotal = screen.getByText("옵션 총 가격:", {exact: false})
+	const optionsTotal = screen.getByText("옵션 총 가격:", { exact: false });
 	expect(optionsTotal).toHaveTextContent("0");
 	
 	const insuranceCheckbox = await screen.findByRole("checkbox",{
@@ -64,7 +64,7 @@ describe('굿즈와 옵션의 총가격을 구합니다.',  () => {
 			userEvent.clear(americaInput);
 			userEvent.type(americaInput, "1");
 
-			expect(total).toHaveTextContent("1000");
+			expect(total).toHaveTextContent("Total Price : 3000 ( 3000 + 0 )");
 	})
 
 	test("Update: 하나의 옵션을 추가할때 총 가격이 변경됩니다.", async () => {
@@ -98,7 +98,7 @@ describe('굿즈와 옵션의 총가격을 구합니다.',  () => {
 		userEvent.clear(americaInput);
     userEvent.type(americaInput, "1");
 
-		expect(total).toHaveTextContent("1500");
+		expect(total).toHaveTextContent("Total Price : 3500 ( 3000 + 500 )");
   });
 
 	})

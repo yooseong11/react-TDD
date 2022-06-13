@@ -26,6 +26,7 @@ const Products = ({ name, imagePath, updateItemCount }) => {
           defaultValue={0}
           onChange={handleChange}
         />
+        <button></button>
       </form>
       
     </div>

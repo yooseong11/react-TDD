@@ -36,7 +36,7 @@ test('주문을 성공합니다.', async () => {
   expect(summaryHeading).toBeInTheDocument();
 
   const productsHeading = screen.getByRole("heading", {
-    name: "여행 상품: 5000",
+    name: "여행 상품: 15000",
   });
   expect(productsHeading).toBeInTheDocument();
 
