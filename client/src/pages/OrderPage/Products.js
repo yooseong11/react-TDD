@@ -19,7 +19,7 @@ const Products = ({ name, imagePath, updateItemCount }) => {
         <label htmlFor={name}>{name}</label>
         <input
           id={name}
-          className="font-semibold border a"
+          className="font-semibold border p-2"
           type="number"
           name="quantity"
           min={0}

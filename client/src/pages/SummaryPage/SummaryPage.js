@@ -32,24 +32,34 @@ const SummaryPage = ({ setStep }) => {
   }
 
   return (
-    <div>
-      <h1>주문 확인</h1>
-      <h2>여행 상품: {orderDatas.totals.products}</h2>
-      <ul>{productList}</ul>
-      {optionsRender}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(e.target.checked)}
-          id="confirm-checkbox"
-        ></input>
-        <label htmlFor="confirm-checkbox">주문하려는 것을 확인하셨나요?</label>
-        <br />
-        <button disabled={!checked} type="submit">
-          주문하기
-        </button>
-      </form>
+    <div className="max-w-xl m-auto h-screen">
+      <div className="bg-white w-96">
+        <header className="text-center p-3 bg-slate-700">
+          <h1 className="text-white">주문 확인</h1>
+        </header>
+        <div>
+          <p className="text-red-500">
+            총 결제 금액: {orderDatas.totals.products}
+          </p>
+          <ul>{productList}</ul>
+          {optionsRender}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={(e) => setChecked(e.target.checked)}
+              id="confirm-checkbox"
+            ></input>
+            <label htmlFor="confirm-checkbox" className="ml-2">
+              주문하려는 것을 확인하셨나요?
+            </label>
+            <br />
+            <button className='w-full bg-blue-500 text-white p-2' disabled={!checked} type="submit">
+              주문하기
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

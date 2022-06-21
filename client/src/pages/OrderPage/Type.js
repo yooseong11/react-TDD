@@ -46,13 +46,19 @@ const Type = ({ orderType }) => {
 
   return (
     <>
-      <h2 className="text-lg">{orderTypeKorean}</h2>
-      <div>
-        <p>가격: {orderDatas.pricePerItem[orderType]}</p>
+      <div className="bg-zinc-200 mt-8 py-3 px-8 rounded">
+        <h2 className="text-lg">{orderTypeKorean}</h2>
+        <p>
+          <span className="text-lg font-bold">
+            {orderDatas.pricePerItem[orderType]}
+          </span>{" "}
+          <span>₩</span>
+        </p>
       </div>
       <div className="py-4">{optionItems}</div>
-      <div>
-        {orderTypeKorean} 총 가격: {orderDatas.totals[orderType]}
+      <div className="border-b-2 pb-8 text-right">
+        <p>{orderTypeKorean} 총 가격</p>
+        <p className="text-lg font-bold ">{orderDatas.totals[orderType]}</p>
       </div>
     </>
   );

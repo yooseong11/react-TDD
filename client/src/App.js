@@ -11,7 +11,7 @@ const [step, setStep] = useState(0);
 
   return (
     <div className="App">
-      <div className="px-8">
+      <div className="bg-slate-100 h-full">
         <OrderContextProvider>
           {step === 0 && <OrderPage setStep={setStep} />}
           {step === 1 && <SummaryPage setStep={setStep} />}
