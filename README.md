@@ -4,28 +4,17 @@
 [따라하며 배우는 리액트 테스트 - 인프런 ](https://www.inflearn.com/course/%EB%94%B0%EB%9D%BC%ED%95%98%EB%8A%94-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8/dashboard) 강의를 보며 제작한 프로젝트입니다. 
 
 Jest와 testing Library를 사용하여 테스트를 진행했으며 강의 이후에 `tailwind`를 적용하여 UI를 수정했습니다.
+## ⭐️ 프로젝트 회고
+[TDD프로젝트 리뷰](https://github.com/meteor-or/react-TDD/blob/main/md/07_Review.md)  
 
 ## ✔ 학습 내용 
-- 리액트 테스트
+- [TDD](https://github.com/meteor-or/react-TDD/blob/main/md/03_TestDrivenDevelopment.md)
 - 리액트 Context
-- Jest
+- [Jest](https://github.com/meteor-or/react-TDD/blob/main/md/01_Jest.md)  
+- [ESlint & Prettier](https://github.com/meteor-or/react-TDD/blob/main/md/02_ESLint%20Prettier.md)
 - React Testing Library
-- Mock Service Worker   
+- [Mock Service Worker](https://github.com/meteor-or/react-TDD/blob/main/md/05_MockServiceWorker.md)  
 
-## ✨ 필기 노트
-[01_Jest & React Testing Library](https://github.com/meteor-or/react-TDD/blob/main/md/01_Jest.md)  
-
-[02_ESlint & Prettier](https://github.com/meteor-or/react-TDD/blob/main/md/02_ESLint%20Prettier.md)
-
-[03_Test Drive Developmemt (TDD)란?](https://github.com/meteor-or/react-TDD/blob/main/md/03_TestDrivenDevelopment.md)  
-
-[04_더나은리엑트테스트](https://github.com/meteor-or/react-TDD/blob/main/md/04_%EB%8D%94%EB%82%98%EC%9D%80%EB%A6%AC%EC%97%91%ED%8A%B8%ED%85%8C%EC%8A%A4%ED%8A%B8.md) 
-
-[05_MockServiceWorker](https://github.com/meteor-or/react-TDD/blob/main/md/05_MockServiceWorker.md)  
-
-[06_describe,it,test](https://github.com/meteor-or/react-TDD/blob/main/md/06_describe%2Cit%2Ctest.md)  
-
-[07_Review](https://github.com/meteor-or/react-TDD/blob/main/md/07_Review.md)  
 
 ## 👀 프로젝트로 배운점  
 
