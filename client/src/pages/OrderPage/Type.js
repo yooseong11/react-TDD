@@ -4,6 +4,7 @@ import Options from "./Options";
 import Products from "./Products";
 import ErrorBanner from "../../components/ErrorBanner";
 import { OrderContext } from "../../contexts/OrderContext";
+import { getProducts } from "../../api/orderApi";
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
@@ -16,8 +17,7 @@ const Type = ({ orderType }) => {
 
   const loadItems = async (orderType) => {
     try {
-      let response = await axios.get(`http://localhost:5000/${orderType}`);
-      console.log(response.data);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/${orderType}`);
       setItems(response.data);
     } catch (error) {
       console.log(error);
