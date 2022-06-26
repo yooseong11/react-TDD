@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import Options from "./Options";
-import Products from "./Products";
-import ErrorBanner from "../../components/ErrorBanner";
-import { OrderContext } from "../../contexts/OrderContext";
-import { getProducts } from "../../api/orderApi";
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import Options from './Options';
+import Products from './Products';
+import ErrorBanner from '../../components/ErrorBanner';
+import { OrderContext } from '../../contexts/OrderContext';
+import { getProducts } from '../../api/orderApi';
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
@@ -17,7 +17,9 @@ const Type = ({ orderType }) => {
 
   const loadItems = async (orderType) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/${orderType}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/${orderType}`
+      );
       setItems(response.data);
     } catch (error) {
       console.log(error);
@@ -29,20 +31,21 @@ const Type = ({ orderType }) => {
     return <ErrorBanner message="에러가 발생했습니다." />;
   }
 
-  const ItemComponents = orderType === "products" ? Products : Options;
+  const ItemComponents = orderType === 'products' ? Products : Options;
 
   const optionItems = items.map((item) => (
     <ItemComponents
       key={item.name}
       name={item.name}
       imagePath={item.imagePath}
+      price={item.price}
       updateItemCount={(itemName, newItemCount) =>
         updateItemCount(itemName, newItemCount, orderType)
       }
     />
   ));
 
-  const orderTypeKorean = orderType === "products" ? "상품" : "옵션";
+  const orderTypeKorean = orderType === 'products' ? '상품' : '옵션';
 
   return (
     <>
@@ -51,7 +54,7 @@ const Type = ({ orderType }) => {
         <p>
           <span className="text-lg font-bold">
             {orderDatas.pricePerItem[orderType]}
-          </span>{" "}
+          </span>{' '}
           <span>₩</span>
         </p>
       </div>

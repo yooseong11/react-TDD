@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-const Products = ({ name, imagePath, updateItemCount }) => {
+const Products = ({ name, imagePath, updateItemCount, price }) => {
   const handleChange = (event) => {
     const currentValue = event.target.value;
 
-    updateItemCount(name, currentValue)
-  }
-
+    updateItemCount(name, currentValue);
+  };
 
   return (
     <div className="mr-2 py-5">
       <img
         className="rounded w-full"
-        src={`${process.env.REACT_APP_API_URL }/${imagePath}`}
+        src={`${process.env.REACT_APP_API_URL}/${imagePath}`}
         alt={`${name} product`}
       />
       <form className="flex flex-col p-1">
         <label htmlFor={name}>{name}</label>
+        <p className="font-bold">{price}원</p>
         <input
           id={name}
           className="font-semibold border p-2"
@@ -28,9 +28,8 @@ const Products = ({ name, imagePath, updateItemCount }) => {
         />
         <button></button>
       </form>
-      
     </div>
   );
 };
 
-export default Products
+export default Products;
