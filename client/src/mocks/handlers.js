@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const handlers = [
-  rest.get("http://localhost:5000/products", (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_API_URL}/products`, (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -15,7 +15,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get("http://localhost:5000/options", (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_API_URL}/options`, (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -27,8 +27,8 @@ export const handlers = [
       ])
     );
   }),
-  rest.post("http://localhost:5000/order", (req, res, ctx) => {
-    let dummyData = [{orderNumber: 212121,price: 2000}]
+  rest.post(`${process.env.REACT_APP_API_URL}/order`, (req, res, ctx) => {
+    let dummyData = [{ orderNumber: 212121, price: 2000 }];
     return res(ctx.json(dummyData));
   }),
 ];

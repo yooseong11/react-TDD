@@ -12,7 +12,7 @@ const Products = ({ name, imagePath, updateItemCount }) => {
     <div className="mr-2 py-5">
       <img
         className="rounded w-full"
-        src={`http://localhost:5000/${imagePath}`}
+        src={`${process.env.REACT_APP_API_URL }/${imagePath}`}
         alt={`${name} product`}
       />
       <form className="flex flex-col p-1">

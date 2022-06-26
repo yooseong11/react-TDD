@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
 import ErrorBanner from "../../components/ErrorBanner";
 import { OrderContext } from "../../contexts/OrderContext";
+import { postOrder } from "../../api/orderApi"
 
 function CompletePage({ setStep }) {
   const [OrderDatas, , resetOrderDatas] = useContext(OrderContext);
@@ -13,16 +14,11 @@ function CompletePage({ setStep }) {
   }, []);
 
   const orderCompleted = async (OrderDatas) => {
-    try {
-      let response = await axios.post(
-        "http://localhost:5000/order",
-        OrderDatas
-      );
-      setOrderHistory(response.data);
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-    }
+    const response = await postOrder(OrderDatas)
+    console.log(response);
+    
+    setOrderHistory(response.data)
+    setLoading(false)
   };
 
   if (error) {
