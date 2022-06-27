@@ -1,9 +1,8 @@
+import React from "react";
 import { render, screen } from "../../../test-utils";
 import Type from "../Type";
 import OrderPage from "../OrderPage";
 import userEvent from "@testing-library/user-event";
-import { OrderContextProvider } from "../../../contexts/OrderContext";
-import { getByRole, getByText } from "@testing-library/react";
 
 test("상품 가격이 변했을 때 상품 총 가격을 업데이트 합니다.", async () => {
     render(<Type orderType="products" />);
@@ -98,20 +97,20 @@ describe("굿즈와 옵션의 총가격을 구합니다.", () => {
     });
 });
 
-    test("+ - 버튼을 누르면 개수가 바뀌고 가격에 반영됩니다..", async () => {
-        render(<OrderPage />);
+test("+ - 버튼을 누르면 개수가 바뀌고 가격에 반영됩니다..", async () => {
+    render(<OrderPage />);
 
-        // + 
-        const plusBtn = await screen.findByTestId("AmericaPlusBtn");
-        userEvent.click(plusBtn);
-        userEvent.click(plusBtn);
-        const total = screen.getByText("Total Price", { exact: false });
+    // +
+    const plusBtn = await screen.findByTestId("AmericaPlusBtn");
+    userEvent.click(plusBtn);
+    userEvent.click(plusBtn);
+    const total = screen.getByText("Total Price", { exact: false });
 
-        expect(total).toHaveTextContent("Total Price : 6000");
-        
-        // -
-        const minusBtn = await screen.findByTestId("AmericaMinusBtn");
-        userEvent.click(minusBtn);
-        
-        expect(total).toHaveTextContent("Total Price : 3000");
-    });
+    expect(total).toHaveTextContent("Total Price : 6000");
+
+    // -
+    const minusBtn = await screen.findByTestId("AmericaMinusBtn");
+    userEvent.click(minusBtn);
+
+    expect(total).toHaveTextContent("Total Price : 3000");
+});
