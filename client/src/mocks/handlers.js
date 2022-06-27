@@ -1,16 +1,18 @@
-import { rest } from "msw";
+import { rest } from 'msw';
 
 export const handlers = [
   rest.get(`${process.env.REACT_APP_API_URL}/products`, (req, res, ctx) => {
     return res(
       ctx.json([
         {
-          name: "America",
-          imagePath: "/images/america.jpeg",
+          name: 'America',
+          imagePath: '/images/america.jpeg',
+          price: 2000,
         },
         {
-          name: "England",
-          imagePath: "/images/england.jpeg",
+          name: 'England',
+          imagePath: '/images/england.jpeg',
+          price: 3000,
         },
       ])
     );
@@ -19,10 +21,10 @@ export const handlers = [
     return res(
       ctx.json([
         {
-          name: "Insurance",
+          name: 'Insurance',
         },
         {
-          name: "Dinner",
+          name: 'Dinner',
         },
       ])
     );
