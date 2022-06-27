@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { OrderContext } from '../../contexts/OrderContext';
 
-const SummaryPage = ({ setStep }) => {
+const SummaryPage = ({ setStep }: any) => {
   const [checked, setChecked] = useState(false);
   const [orderDatas] = useContext(OrderContext);
 
   const productsArray = Array.from(orderDatas.products);
-  const productList = productsArray.map(([key, value]) => (
+  const productList = productsArray.map(([key, value]: any) => (
     <li key={key}>
       {value} {key}
     </li>
@@ -17,7 +17,7 @@ const SummaryPage = ({ setStep }) => {
 
   if (hasOptions) {
     const optionArray = Array.from(orderDatas.options.keys());
-    const optionList = optionArray.map((key) => <li key={key}>{key}</li>);
+    const optionList = optionArray.map((key: any) => <li key={key}>{key}</li>);
     optionsRender = (
       <>
         <h2>옵션: {orderDatas.totals.options}</h2>
@@ -26,10 +26,10 @@ const SummaryPage = ({ setStep }) => {
     );
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setStep(2);
-  }
+  const handleSubmit = (event: React.FormEvent) => {
+      event.preventDefault();
+      setStep(2);
+  };
 
   return (
     <div className="max-w-xl m-auto h-screen">

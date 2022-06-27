@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
-const Products = ({ name, imagePath, updateItemCount, price }) => {
-    const [value, setValue] = useState(0);
+export interface ProductsProps {
+    name: string;
+    imagePath: string;
+    updateItemCount: (name: string, value: number) => void;
+    price: number;
+}
 
-    
-    const handleChange = (event) => {
-        const currentValue = event.target.value;
-        setValue(parseInt(currentValue));
+const Products = ({
+    name,
+    imagePath,
+    updateItemCount,
+    price,
+}: ProductsProps) => {
+    const [value, setValue] = useState<number>(0);
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const currentValue = parseInt(event.target.value);
+        setValue(currentValue);
         updateItemCount(name, currentValue);
     };
 
-    const onClickPlusBtn = function(e) {
+    const onClickPlusBtn = function () {
         setValue((prev) => prev + 1);
         updateItemCount(name, value + 1);
-    };    
-    const onClickMinusBtn = function (e) {
+    };
+    const onClickMinusBtn = function () {
         if (value <= 0) {
-          return
+            return;
         }
 
         setValue((prev) => prev - 1);
