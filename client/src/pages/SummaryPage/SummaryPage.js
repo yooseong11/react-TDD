@@ -38,9 +38,9 @@ const SummaryPage = ({ setStep }) => {
           <h1 className="text-white">주문 확인</h1>
         </header>
         <div>
-          <p className="text-red-500">
-            총 결제 금액: {orderDatas.totals.products}
-          </p>
+          <h2 className="text-red-500">
+            여행 상품: {orderDatas.totals.products}
+          </h2>
           <ul>{productList}</ul>
           {optionsRender}
           <form onSubmit={handleSubmit}>
