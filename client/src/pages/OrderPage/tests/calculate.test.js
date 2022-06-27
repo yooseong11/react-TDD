@@ -96,14 +96,22 @@ describe("굿즈와 옵션의 총가격을 구합니다.", () => {
 
         expect(total).toHaveTextContent("Total Price : 3500 ( 3000 + 500 )");
     });
+});
 
-    test("+ 버튼을 누르면 개수가 증가합니다.", async () => {
+    test("+ - 버튼을 누르면 개수가 바뀌고 가격에 반영됩니다..", async () => {
         render(<OrderPage />);
 
-        const clickBtn = await screen.findByTestId("AmericaPlusBtn");
-        userEvent.click(clickBtn);
+        // + 
+        const plusBtn = await screen.findByTestId("AmericaPlusBtn");
+        userEvent.click(plusBtn);
+        userEvent.click(plusBtn);
         const total = screen.getByText("Total Price", { exact: false });
 
+        expect(total).toHaveTextContent("Total Price : 6000");
+        
+        // -
+        const minusBtn = await screen.findByTestId("AmericaMinusBtn");
+        userEvent.click(minusBtn);
+        
         expect(total).toHaveTextContent("Total Price : 3000");
     });
-});

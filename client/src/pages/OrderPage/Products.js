@@ -11,8 +11,16 @@ const Products = ({ name, imagePath, updateItemCount, price }) => {
     };
 
     const onClickPlusBtn = function(e) {
-        updateItemCount(name, value + 1)
         setValue((prev) => prev + 1);
+        updateItemCount(name, value + 1);
+    };    
+    const onClickMinusBtn = function (e) {
+        if (value <= 0) {
+          return
+        }
+
+        setValue((prev) => prev - 1);
+        updateItemCount(name, value - 1);
     };
 
     return (
@@ -25,18 +33,29 @@ const Products = ({ name, imagePath, updateItemCount, price }) => {
             <div className="flex flex-col p-1">
                 <label htmlFor={name}>{name}</label>
                 <p className="font-bold">{price}원</p>
-                <input
-                    id={name}
-                    className="font-semibold border p-2"
-                    type="number"
-                    name="quantity"
-                    value={value}
-                    min={0}
-                    onChange={handleChange}
-                />
-                <button data-testid={`${name}PlusBtn`} onClick={onClickPlusBtn}>
-                    +
-                </button>
+                <div>
+                    <button
+                        data-testid={`${name}MinusBtn`}
+                        onClick={onClickMinusBtn}
+                    >
+                        -
+                    </button>
+                    <input
+                        id={name}
+                        className="font-semibold border p-2"
+                        type="number"
+                        name="quantity"
+                        value={value}
+                        min={0}
+                        onChange={handleChange}
+                    />
+                    <button
+                        data-testid={`${name}PlusBtn`}
+                        onClick={onClickPlusBtn}
+                    >
+                        +
+                    </button>
+                </div>
             </div>
         </div>
     );
