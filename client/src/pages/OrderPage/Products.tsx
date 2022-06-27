@@ -3,10 +3,9 @@ import React, { ChangeEvent, useState } from "react";
 export interface ProductsProps {
     name: string;
     imagePath: string;
-    updateItemCount: (name:string, value: number) => void;
+    updateItemCount: (name: string, value: number) => void;
     price: number;
 }
-
 
 const Products = ({
     name,
@@ -17,7 +16,7 @@ const Products = ({
     const [value, setValue] = useState<number>(0);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const currentValue = parseInt(event.target.value)
+        const currentValue = parseInt(event.target.value);
         setValue(currentValue);
         updateItemCount(name, currentValue);
     };
